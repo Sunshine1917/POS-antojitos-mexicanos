@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, exceptions, status
+from fastapi import APIRouter, HTTPException, status
 from pydantic import BaseModel
 
 router = APIRouter(prefix= "/pedido",
@@ -11,15 +11,15 @@ class Pedido(BaseModel):
     cliente: str
     orden: dict[str, int] # Clave nombre de platillo -> Valor cantidad solicitada
 
-fk_db =[Pedido(id= 1, cliente="Omar", orden = {"chalupa": 4, 
+fk_db =[Pedido(id= 1, cliente="Juan", orden = {"chalupa": 4, 
                                                "refresco": 2,
                                                "taco": 5}),
 
-        Pedido(id= 2, cliente= "Karina", orden = {"tostada_simple": 2,
+        Pedido(id= 2, cliente= "Jose", orden = {"tostada_simple": 2,
                                                   "refresco": 1,
                                                   "tostada_especial": 1}),
 
-        Pedido(id= 4, cliente= "Majo", orden = {"chalupa": 15,
+        Pedido(id= 4, cliente= "Maria", orden = {"chalupa": 15,
                                                 "agua": 1,
                                                 "pozole": 2})
         ]
@@ -71,5 +71,5 @@ def search_pedido(id: int):
     try:
         return list(pedidos)[0]
     except:
-        return {"error", "Pedido no encontrado"}
+        return {"error": "Pedido no encontrado"}
 
