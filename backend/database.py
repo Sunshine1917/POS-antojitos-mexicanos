@@ -25,21 +25,21 @@ try:
         CREATE TABLE PLATILLO(
             PlatilloID INTEGER PRIMARY KEY,
             Name TEXT NOT NULL,
-            PrecioActual REAL NOT NULL,
+            PrecioActual INTEGER NOT NULL,
             Activo INTEGER NOT NULL
         );
 
         CREATE TABLE MODIFICADOR(
             ModificadorID INTEGER PRIMARY KEY,
             Name TEXT NOT NULL,
-            PrecioExtra REAL NOT NULL
+            PrecioExtra INTEGER NOT NULL
             );
 
         CREATE TABLE ORDEN(
             OrdenID INTEGER PRIMARY KEY,
-            FechaHora TEXT,
+            FechaHora DATETIME NOT NULL,
             NombreCliente TEXT NOT NULL,
-            Total REAL NOT NULL,
+            Total INTEGER NOT NULL,
             Estado TEXT NOT NULL
         );
 
@@ -49,16 +49,16 @@ try:
             PlatilloID INTEGER NOT NULL REFERENCES PLATILLO(PlatilloID),
             DetallePadreID INTEGER REFERENCES ORDEN_DETALLADO(DetalleID),
             Cantidad INTEGER NOT NULL,
-            PrecioBaseHistorico REAL NOT NULL,
+            PrecioBaseHistorico INTEGER NOT NULL,
             Notas TEXT
         );
 
         CREATE TABLE ORDEN_DETALLE_MODIFICADOR(
             DetalleModificadorID INTEGER PRIMARY KEY,
-            DetalleID  NOT NULL REFERENCES ORDEN_DETALLADO(DetalleID),
+            DetalleID  INTEGER NOT NULL REFERENCES ORDEN_DETALLADO(DetalleID),
             ModificadorID INTEGER NOT NULL REFERENCES MODIFICADOR(ModificadorID),
             Cantidad INTEGER NOT NULL,
-            PrecioExtraHistorico REAL NOT NULL
+            PrecioExtraHistorico INTEGER NOT NULL
         );
     """
 
