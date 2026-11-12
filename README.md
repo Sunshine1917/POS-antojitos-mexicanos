@@ -21,24 +21,25 @@ Sistema de Punto de Venta (POS) desarrollado a medida para optimizar la gestión
 ## Estructura del proyecto
 
 ```text
+```text
 POS-antojitos-mexicanos/
 │
 ├── backend/
-│   ├── routers/
-│   │   ├── menu.py
-│   │   ├── pago.py
-│   │   └── pedido.py
-│   ├── database.py
-│   └── main.py
+│   ├── schemas/           
+│   ├── servicios/        
+│   ├── routers/          
+│   ├── config.py         
+│   ├── db.py              
+│   ├── errores.py        
+│   └── main.py          
 │
-├── .env.example
 ├── .gitignore
 ├── README.md
 └── requirements.txt
 ```
 ## Instrucciones de instalación y ejecución local
 ### Clonar el repositorio
-git clone [https://github.com/Sunshine_1917/POS-antojitos-mexicanos.git](https://github.com/Sunshine_1917/POS-antojitos-mexicanos.git)
+git clone [https://github.com/Sunshine_1917/POS-antojitos-mexicanos.git](https://github.com/Sunshine1917/POS-antojitos-mexicanos)
 <br>
 cd POS-antojitos-mexicanos
 
