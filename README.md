@@ -21,7 +21,6 @@ Sistema de Punto de Venta (POS) desarrollado a medida para optimizar la gestión
 ## Estructura del proyecto
 
 ```text
-```text
 POS-antojitos-mexicanos/
 │
 ├── backend/
