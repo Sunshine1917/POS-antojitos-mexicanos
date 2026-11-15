@@ -1,13 +1,9 @@
 import sqlite3
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-db_name = os.getenv("DB_NAME", "antojitos_mexicanos.db")
+from config import DB_PATH
 
 try:
     #This connect with the databse and create a cursor
-    sqliteConection = sqlite3.connect(db_name)
+    sqliteConection = sqlite3.connect(DB_PATH)
     cursor = sqliteConection.cursor()
     print('DataBase Init')
 
@@ -57,7 +53,7 @@ try:
             DetalleModificadorID INTEGER PRIMARY KEY,
             DetalleID  INTEGER NOT NULL REFERENCES ORDEN_DETALLADO(DetalleID),
             ModificadorID INTEGER NOT NULL REFERENCES MODIFICADOR(ModificadorID),
-            Cantidad INTEGER NOT NULL,
+            Cantidad INTEGER NOT NULL CHECK (Cantidad = 1),
             PrecioExtraHistorico INTEGER NOT NULL
         );
     """
