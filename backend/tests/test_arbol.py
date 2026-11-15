@@ -63,3 +63,32 @@ def test_platillo_con_un_hijo_con_modificador():
         ]
     }
     assert calcular_precio_nodo(nodo) == 18300
+
+def test_arbol_tres_niveles_con_modificadores():
+    nodo = {
+        "PrecioBaseHistorico": 2500,
+                "Cantidad": 3,
+                "Modificadores": [
+                    {"PrecioExtraHistorico": 800,"Cantidad": 1},
+                    {"PrecioExtraHistorico": 1000,"Cantidad": 1}
+                ],
+                "Contiene": [
+                    {
+                        "PrecioBaseHistorico": 1000,
+                                        "Cantidad": 4,
+                                        "Modificadores":[{"PrecioExtraHistorico":1000,"Cantidad":1}],
+                                        "Contiene": [
+                                            {
+                                                "PrecioBaseHistorico": 1500,
+                                                                "Cantidad": 2,
+                                                                "Modificadores":[
+                                                                    {"PrecioExtraHistorico": 1800,"Cantidad": 1},
+                                                                    {"PrecioExtraHistorico": 1500,"Cantidad": 1}
+                                                                ],
+                                                                "Contiene": []
+                                            }
+                                        ]
+                    }
+                ]
+            }
+    assert calcular_precio_nodo(nodo) == 152100
