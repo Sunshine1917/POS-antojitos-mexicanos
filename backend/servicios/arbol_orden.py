@@ -98,7 +98,7 @@ def calcular_precio_nodo(nodo):
 
      suma_modificadores = 0
      for mod in nodo["Modificadores"]:
-          suma_modificadores += (mod["PrecioExtraHistorico"]*mod["Cantidad"])
+          suma_modificadores += mod["PrecioExtraHistorico"]
 
      suma_hijos = 0
      for hijo in nodo["Contiene"]:

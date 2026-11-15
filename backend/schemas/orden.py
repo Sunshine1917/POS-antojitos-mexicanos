@@ -3,8 +3,9 @@ from typing import Annotated
 import datetime as dt
 
 def centavos_a_pesos(centavos:int) -> str: 
-     pesos, resto = divmod(centavos, 100)
-     return f"{pesos}.{resto:02d}"
+     signo = "-" if centavos < 0 else ""
+     pesos, resto = divmod(abs(centavos), 100)
+     return f"{signo}{pesos}.{resto:02d}"
 
 Dinero = Annotated[int, PlainSerializer(centavos_a_pesos, return_type= str, when_used="json")]
 
@@ -29,7 +30,7 @@ class OrdenRespuesta(BaseModel): #Modelo de respuesta
 # Clases para generar la Comanda
 class ModificadoresItem(BaseModel):
      NombreModificador: str
-     Cantidad: int
+     Cantidad: int #Se tomo la decisión de que cantidad siempre valga uno
 
 class Comanda(BaseModel):
      Cantidad: int = Field(gt = 0)
@@ -47,7 +48,7 @@ class ComandaRespuesta(BaseModel):
 # Clases para generar el ticket
 class Ticket(BaseModel):
      Cantidad: int = Field(gt=0)
-     NombrePlatillo:str = Field(min_lenght= 1)
+     NombrePlatillo:str = Field(min_length= 1)
      Modificadores: list['ModificadoresItem'] = []
      Contiene: list['Ticket'] = []
 
