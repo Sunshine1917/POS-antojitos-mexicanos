@@ -10,3 +10,4 @@ venv/
 .vscode/
 
 backend/pruebas_locales
+.pytest_cache/
